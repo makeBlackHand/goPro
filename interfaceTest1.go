@@ -23,7 +23,7 @@ func (s StudentSlice) Swap(i, j int) {
 	s[i], s[j] = s[j], s[i]
 }
 
-func main1() {
+func main() {
 	var s2 StudentSlice
 	for i := 0; i < 5; i++ {
 		s1 := Students{
