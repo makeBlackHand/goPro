@@ -23,17 +23,17 @@ func (s StudentSlice) Swap(i, j int) {
 	s[i], s[j] = s[j], s[i]
 }
 
-func main() {
-	var s StudentSlice
+func main1() {
+	var s2 StudentSlice
 	for i := 0; i < 5; i++ {
 		s1 := Students{
 			Name:  fmt.Sprintf("学生-%d", rand.Intn(10)),
 			Age:   rand.Intn(20),
 			Score: float64(rand.Intn(100)) + rand.Float64(),
 		}
-		s = append(s, s1)
+		s2 = append(s2, s1)
 	}
-	sort.Sort(s)
-	fmt.Println(s)
+	sort.Sort(s2)
+	fmt.Println(s2)
 
 }
