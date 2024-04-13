@@ -33,6 +33,7 @@ func main1() {
 		}
 		s2 = append(s2, s1)
 	}
+
 	sort.Sort(s2)
 	fmt.Println(s2)
 
