@@ -17,7 +17,7 @@ func (s StudentSlice) Len() int {
 	return len(s)
 }
 func (s StudentSlice) Less(i, j int) bool {
-	return s[i].Score < s[j].Score
+	return s[i].Score > s[j].Score
 }
 func (s StudentSlice) Swap(i, j int) {
 	s[i], s[j] = s[j], s[i]
