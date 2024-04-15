@@ -24,6 +24,8 @@ type LittleMonkey struct {
 	Monkey
 }
 
+//
+
 func main() {
 	monkey := LittleMonkey{
 		Monkey{Name: "斗战胜佛"},
