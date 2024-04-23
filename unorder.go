@@ -61,7 +61,7 @@ func TestSlice1() string {
 	if err != nil {
 		println("序列化失败 err=", err)
 	}
-	//fmt.Printf("slice序列化后是%v\n", string(data))
+	fmt.Printf("slice序列化后是%v\n", string(data))
 	return string(data)
 }
 
