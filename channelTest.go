@@ -28,7 +28,7 @@ func main() {
 	chan1 := make(chan int, 50)
 	chan2 := make(chan bool, 1)
 	go write(chan1)
-	go read(chan1, chan2)
+	go read(chan1, chan2) //只写不读会堵塞，读写速率不同无所谓
 	v := <-chan2
 	if v == true {
 		fmt.Println("read完毕！！！！")
