@@ -31,7 +31,7 @@ func (c Cameras) Stop() {
 }
 func main() {
 	var usbArr [2]Usbs
-	usbArr[0] = Phones{"小米"}
-	usbArr[1] = Cameras{"尼康"}
+	usbArr[0] = Phones{"丁浩宸"}
+	usbArr[1] = Cameras{"于贤达"}
 	fmt.Println(usbArr)
 }
