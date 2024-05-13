@@ -1,0 +1,6 @@
+server:
+    ipAddr: 1.1.1.1
+    port: 9090
+redisServer:
+    redisIpAddr: dewred.com
+    redisPort: 6379
