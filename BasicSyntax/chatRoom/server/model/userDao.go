@@ -33,7 +33,7 @@ func (this *UserDao) GetUserById(con redis.Conn, id int) (user *User, err error)
 	//fmt.Printf("555555555user=", res)
 	//s := `{"userID":123,"userPwd":"456","userName":""}`
 	err = json.Unmarshal([]byte(res), &user)
-
+	//fmt.Println("user=", user)
 	if err != nil {
 		fmt.Println("userDao反序列化失败", err)
 		return

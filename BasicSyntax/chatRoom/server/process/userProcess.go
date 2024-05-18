@@ -31,7 +31,7 @@ func (this *UserProcess) ServerProcessLogin(mes *message.Message) (err error) {
 	if err != nil {
 		if err == model.ERROR_USER_NOEEXIST {
 			loginResMes.Code = 500
-			loginResMes.Error = err.Error()
+			loginResMes.Error = err.Error() //err.Error()是取出2err里的错误
 		} else if err == model.ERROR_USER_PWD {
 			loginResMes.Code = 403
 			loginResMes.Error = err.Error()

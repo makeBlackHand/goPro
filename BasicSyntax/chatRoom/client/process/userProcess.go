@@ -56,10 +56,12 @@ func (this *UserProcess) Login(id int, pwd string) (err error) {
 	}
 
 	var loginResMesData message.LoginResMes
+
 	tf := &util.Transfer{
 		Con: con,
 		Buf: [8096]byte{},
 	}
+
 	mes, err = tf.ReadPkg()
 	if err != nil {
 		fmt.Println("loginResMes readPkg ERR")
