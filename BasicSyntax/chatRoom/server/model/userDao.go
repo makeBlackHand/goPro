@@ -26,7 +26,7 @@ func (this *UserDao) GetUserById(con redis.Conn, id int) (user *message.User, er
 	//fmt.Println("id=", id)
 	res, err := redis.String(con.Do("HGet", "users", id))
 
-	fmt.Println("77777777777777user", res)
+	fmt.Println("user", res)
 	if err != nil {
 		if err == redis.ErrNil {
 			err = ERROR_USER_NOEEXIST

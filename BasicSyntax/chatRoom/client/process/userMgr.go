@@ -2,11 +2,14 @@ package process
 
 import (
 	"fmt"
+	"goPro/BasicSyntax/chatRoom/client/model"
 	"goPro/BasicSyntax/chatRoom/common/message"
 )
 
 // 客户端的map
 var OnlineUser map[int]*message.User = make(map[int]*message.User, 10)
+
+var CurUser model.CurUser
 
 func outputOnlineUser() {
 	fmt.Println("当前在线用户列表:")

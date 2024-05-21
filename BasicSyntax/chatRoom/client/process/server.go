@@ -17,13 +17,18 @@ func ShowMenu() {
 	fmt.Println("--------4.退出系统--------")
 	fmt.Println("请选择（1-4）：")
 	var key int
+	var content string
+	smsProcee := &SmsProcess{}
 	fmt.Scanf("%d\n", &key)
 	switch key {
 	case 1:
-		fmt.Println("显示用户在线列表")
+		//fmt.Println("显示用户在线列表")
 		outputOnlineUser()
 	case 2:
-		fmt.Println("发送消息")
+		fmt.Println("你想对大家说什么:")
+		fmt.Scanf("%s\n", &content)
+		smsProcee.SendGroupMes(content)
+		//fmt.Println("发送消息")
 	case 3:
 		fmt.Println("消息列表")
 	case 4:
@@ -56,6 +61,8 @@ func ServerProcessMes(con net.Conn) {
 			var notifyUserStatusMes message.NotifyUserStatusMes
 			json.Unmarshal([]byte(mes.Data), &notifyUserStatusMes)
 			updateUserStatus(&notifyUserStatusMes)
+		case message.SmsMesType:
+			outputGroupMes(&mes)
 		default:
 			fmt.Println("服务器端返回一个未知类型")
 		}
