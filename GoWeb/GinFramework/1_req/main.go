@@ -1,27 +1,30 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
+	"fmt"
 	_ "github.com/gin-gonic/gin"
 	"net/http"
 )
 
-type Info struct {
-	Name string `json:"name"`
-	Age  int    `json:"age"`
+// 创建处理器函数
+func handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "通过自己的多路复用处理器处理请求！", r.URL.Path)
+}
+
+func handler2(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "Hello World22222", r.URL.Path)
 }
 
 func main() {
-	r := gin.Default()
+	mux := http.NewServeMux()
+	//自己创建多路复用器
 
-	r.GET("/", func(context *gin.Context) {
-		context.JSON(http.StatusOK, &Info{
-			Name: "kanna",
-			Age:  24,
-		})
-	})
+	//http会注册到默认,换成mux回存到nux
+	mux.HandleFunc("/", handler) //+Func是把普通方法装换成处理器（更让方便快捷）
+	http.HandleFunc("/", handler2)
 
-	r.Run("localhost:9090")
+	//创建路由
+	http.ListenAndServe("localhost:8080", mux) //用自己的多路复用器
 }
 
 //func handler(w http.ResponseWriter, r *http.Request) {
