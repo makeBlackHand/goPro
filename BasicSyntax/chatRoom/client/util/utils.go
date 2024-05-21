@@ -3,9 +3,9 @@ package util
 import (
 	"encoding/binary"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"goPro/BasicSyntax/chatRoom/common/message"
-	"io"
 	"log"
 	"net"
 )
@@ -18,8 +18,10 @@ type Transfer struct {
 func (this *Transfer) ReadPkg() (mes message.Message, error error) {
 	//buf := make([]byte, 1024)
 	_, error = this.Con.Read(this.Buf[:4]) //0-3存放消息长度
-	if error != nil || error == io.EOF {
-		//error = errors.New("read pkgHead err")
+	fmt.Println(error)
+	fmt.Println()
+	if error != nil {
+		error = errors.New("1111111111read pkgHead err")
 		return
 	}
 	var pkgLen uint32
@@ -27,7 +29,7 @@ func (this *Transfer) ReadPkg() (mes message.Message, error error) {
 	n, error := this.Con.Read(this.Buf[:pkgLen])
 	fmt.Println("n=", n, "pkglen=", pkgLen)
 	if error != nil { //n != int(pkgLen) ||
-		//error = errors.New("read pkgbody err")
+		error = errors.New("222222222read pkgbody err")
 		return
 	}
 	//fmt.Println("buf=", string(this.buf))

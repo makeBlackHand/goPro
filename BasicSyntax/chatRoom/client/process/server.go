@@ -1,8 +1,10 @@
 package process
 
 import (
+	"encoding/json"
 	"fmt"
 	"goPro/BasicSyntax/chatRoom/client/util"
+	"goPro/BasicSyntax/chatRoom/common/message"
 	"net"
 	"os"
 )
@@ -19,6 +21,7 @@ func ShowMenu() {
 	switch key {
 	case 1:
 		fmt.Println("显示用户在线列表")
+		outputOnlineUser()
 	case 2:
 		fmt.Println("发送消息")
 	case 3:
@@ -44,6 +47,17 @@ func ServerProcessMes(con net.Conn) {
 		if e != nil {
 			fmt.Println("客户端读取服务端失败")
 			return
+		}
+		//读到消息后判断类型进行处理
+		switch mes.Type {
+		case message.NotifyUserStatusMesType: //有人上线
+			//取出NotifyUserStatusMes
+			//把用户信息和状态保存在客户端的map里
+			var notifyUserStatusMes message.NotifyUserStatusMes
+			json.Unmarshal([]byte(mes.Data), &notifyUserStatusMes)
+			updateUserStatus(&notifyUserStatusMes)
+		default:
+			fmt.Println("服务器端返回一个未知类型")
 		}
 		fmt.Println("mes=", mes)
 	}

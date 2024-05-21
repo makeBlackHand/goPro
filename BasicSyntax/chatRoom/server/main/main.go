@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"goPro/BasicSyntax/chatRoom/server/model"
+	process2 "goPro/BasicSyntax/chatRoom/server/process"
 	"net"
 	"time"
 )
@@ -30,6 +31,7 @@ func Init() {
 	//服务器启动时就初始化redis的连接池
 	InitPool("api.ikanned.com:16379", 16, 0, 300*time.Second)
 	IninUserDao()
+	process2.InitMgr()
 }
 
 func main() {

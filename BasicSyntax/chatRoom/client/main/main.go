@@ -7,8 +7,9 @@ import (
 )
 
 var (
-	Id  int
-	Pwd string
+	Id   int
+	Pwd  string
+	Name string
 )
 
 func main() {
@@ -33,6 +34,17 @@ func main() {
 			//loop = false
 		case 2:
 			println("注册用户")
+			fmt.Printf("请输入用户的id:")
+			fmt.Scanf("%d\n", &Id)
+			fmt.Printf("请输入用户的密码:")
+			fmt.Scanf("%s\n", &Pwd)
+			fmt.Printf("请输入用户的姓名（nickname）:")
+			fmt.Scanf("%s\n", &Name)
+			up := &process.UserProcess{}
+			err := up.Register(Id, Pwd, Name)
+			if err != nil {
+				return
+			}
 			//loop = false
 		case 3:
 			println("系统已退出。。。。")
