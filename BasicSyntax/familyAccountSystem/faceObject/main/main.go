@@ -1,7 +1,7 @@
 package main
 
 import (
-	modle "goPro/familyAccountSystem/faceObject/model"
+	modle "goPro/familyAccountSystem/faceObject/main"
 )
 
 func main() {

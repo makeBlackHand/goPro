@@ -1,0 +1,64 @@
+{{ define "default/index.html" }}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="static/css/base.css">
+    </head>
+    <body>
+    {{template "public/page_header.html" .}}
+    //引入自定义模板
+    <img src="/static/image/node.jpg" alt="">
+    <h2>{{.title}}</h2>
+    {{$t :=.title}}  //后台数据赋值给变量
+    <br>
+    <p4>{{$t}}</p4>
+    {{if ge .score 60}}
+        <p>及格</p>
+    {{else}}
+        <p>不及格</p>
+            {{end}}
+    //判断完用end结尾
+    <ul>
+        //循环遍历切片,赋值的变量不用+.
+    {{range $key,$value:=.hobby}}
+        <li>{{$key}}-----{{$value}}</li>
+        {{end}}
+    </ul>
+    <br>
+    <ul>
+        {{range $key,$value:=.newslist}}
+            <li>{{$key}}-----{{$value.Title}}----{{$value.Content}}</li>
+        {{end}}
+    </ul>
+    <br>
+    <ul>
+        {{range $key,$value:=.test}}
+            <li>{{$key}}-----{{$value}}</li>
+                {{else}}
+            <li>切片没有数据</li>
+        {{end}}
+    </ul>
+    <br>
+        //with相当于把.news赋值给一个.进行省略
+    {{with .news}}
+       <p>{{.Title}}</p>
+       <p>{{.Content}}</p>
+            {{end}}
+    <br>
+    {{len .title}}
+    //一个中文占三个字符
+    <br>
+    {{.data}}
+    <br>
+    {{UnixToTime .data}}
+    <br>
+    {{Println .title .msg}}
+    <br>
+    <br>
+    {{template "public/page_footer.html" .}}
+    //  .是当前页面数据
+        </body>
+        </html>
+    {{end}}
