@@ -2,7 +2,7 @@ package routers
 
 import (
 	"github.com/gin-gonic/gin"
-	"goPro/gin/3_router_type/controllers/api"
+	"goPro/gin/6_model/controllers/api"
 )
 
 func ApiRoutersInit(r *gin.Engine) {

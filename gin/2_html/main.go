@@ -45,7 +45,7 @@ func main() {
 	r.LoadHTMLGlob("templates/**/*")
 	//加载模板
 	r.GET("/", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "default/index.html", gin.H{
+		c.HTML(http.StatusOK, "itying/index.html", gin.H{
 			"title": "前台首页",
 			"score": 89,
 			"msg":   "msg",
@@ -97,7 +97,7 @@ func main() {
 
 	//post演示
 	r.GET("/user", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "default/user.html", gin.H{})
+		c.HTML(http.StatusOK, "itying/user.html", gin.H{})
 	})
 
 	//获取get,post的值传到结构体上
@@ -154,7 +154,7 @@ func main() {
 			Title:   "新闻标题",
 			Content: "新闻内容",
 		}
-		c.HTML(http.StatusOK, "default/news.html", gin.H{
+		c.HTML(http.StatusOK, "itying/news.html", gin.H{
 			"title": "新闻",
 			"news":  news,
 		})

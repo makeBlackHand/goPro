@@ -179,7 +179,7 @@ func main() {
 //	case message.LoginMesType: //处理登录逻辑
 //		err = serverProcessLogin(con, mes)
 //	case message.ResigterMesType: //处理注册逻辑
-//	default:
+//	itying:
 //		fmt.Println("消息类型存在，无法处理。。")
 //	}
 //	return
